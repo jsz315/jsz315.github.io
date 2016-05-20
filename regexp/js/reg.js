@@ -22,9 +22,8 @@ $(function(){
 		var rs = null;
 		var list = [];
 		while(rs = regexp.exec(str)){
-			for(var i = 0; i < rs.length; i++){
-				list.push(rs[i]);
-			}
+			rs.shift();
+			list.push("[" + rs.join(", ") + "]");
 		}
 		
 		$(".source")[0].innerHTML = regexp.source;
