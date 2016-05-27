@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+    <title></title>
+    <link href="css/base.css" rel="stylesheet">
+    <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="js/ejs.js" type="text/javascript"></script>
+    <script src="js/base.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+<div class="main">
+    <div class="bar">
+        <input type="text" class="num-txt">
+        <span class="btn">确定</span>
+    </div>
+    <div class="down-txt"></div>
+    <div class="up-txt"></div>
+
+    <div class="btn-bar">
+        <div class="all-btn">全部</div>
+        <div class="auto-btn">自动朗读</div>
+    </div>
+
+    <div class="num-list"></div>
+
+    <div class="sound"></div>
+
+</div>
+
+<script id="num-item" type="text/html">
+    <div class="num-item">
+        <div class="num-id">{%= num %}</div>
+        <div class="num-part">
+            <div class="down-txt">{%= down %}</div>
+            <div class="up-txt">{%= up %}</div>
+        </div>
+    </div>
+</script>
+
+<script id="sound" type="text/html">
+    {% for(var i = 0; i < list.length; i++){ %}
+    <audio id="{%= list[i].id %}" onended="soundEnd(this)">
+        <source src="{%= list[i].src %}">
+    </audio>
+    {% } %}
+</script>
+
+</body>
+</html>
