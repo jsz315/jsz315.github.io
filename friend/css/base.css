@@ -1,0 +1,56 @@
+html,body{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+.content{
+    width: 90%;
+    margin: 12px auto;
+    position: relative;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.txt-box{
+    display: inline-block;
+    width: 38%;
+    vertical-align: top;
+}
+.tip{
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+.txt{
+    font-size: 12px;
+    display: inline-block;
+    width: 100%;
+    height: 450px;
+    box-sizing: border-box;
+}
+.btn-list{
+    vertical-align: top;
+    position: relative;
+    top: 120px;
+    display: inline-block;
+    width: 18%;
+}
+.btn{
+    text-align: center;
+    color: #ffffff;
+    font-size: 15px;
+    padding: 8px 0;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.play-btn{
+    background: #18b9ff;
+}
+.debug-btn{
+    background: #ff2e1d;
+    margin-bottom: 24px;
+}
