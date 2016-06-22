@@ -16,6 +16,9 @@
         #conn{
             margin-top: 12px;
         }
+        span{
+            color: #ff0000;
+        }
     </style>
 </head>
 <body>
@@ -54,12 +57,16 @@
                     break;
             }
             alert(tip);
-            conn.innerHTML = "navigator.connection.type: " + type + " = " + tip;
+            showTip(type + " = " + tip);
         }
         catch (e){
             alert("无法获取网络状态");
-            conn.innerHTML = "navigator.connection.type: undefined";
+            showTip("undefined");
         }
+    }
+
+    function showTip(str){
+        conn.innerHTML = "navigator.connection.type: <span>" + str + "</span>";
     }
 </script>
 
