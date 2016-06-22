@@ -31,10 +31,9 @@
     var conn = document.getElementById("conn");
     var connection = navigator.connection||navigator.mozConnection||navigator.webkitConnection||{tyep:'unknown'};
     var type_text = ['unknown','ethernet','wifi','2g','3g','4g','none'];
-     
-    alert(connection.type);
 
     function check(){
+        alert(connection.type);
         showTip('Waiting...');
         
         if(typeof(connection.type) == "number"){
