@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+    <title>个人站点</title>
+    <style>
+        a{
+            display: block;
+            text-align: center;
+            padding: 7px 0;
+            background: #0090ff;
+            font-size: 15px;
+            color: #ffffff;
+        }
+        #conn{
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<a onclick="check()">测试网络状态</a>
+<div id="conn"></div>
+
+<script>
+    var conn = document.getElementById("conn");
+    function check(){
+        conn.innerHTML = "";
+        try{
+            var type = navigator.connection.type;
+            var tip = "未知网络";
+            switch (type){
+                case 0:
+                    tip = "unknown";
+                    break;
+                case 1:
+                    tip = "ethernet";
+                    break;
+                case 2:
+                    tip = "wifi";
+                    break;
+                case 3:
+                    tip = "2g";
+                    break;
+                case 4:
+                    tip = "3g";
+                    break;
+                case 5:
+                    tip = "4g";
+                    break;
+                default:
+                    tip = "未知网络";
+                    break;
+            }
+            alert(tip);
+            conn.innerHTML = "navigator.connection.type: " + type;
+        }
+        catch (e){
+            alert("无法获取网络状态");
+            conn.innerHTML = "navigator.connection.type: undefined";
+        }
+    }
+</script>
+
+</body>
+</html>
