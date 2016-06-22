@@ -16,6 +16,9 @@
         #conn{
             margin-top: 12px;
         }
+        #ua{
+            word-break: break-all;
+        }
         span{
             color: #ff0000;
         }
@@ -25,6 +28,7 @@
 
 <a onclick="check()">测试网络状态</a>
 <div id="conn"></div>
+<div id="ua"></div>
 
 <script>
  
@@ -63,6 +67,8 @@
     function showTip(str){
         conn.innerHTML = str;
     }
+
+    document.getElementById("ua").innerHTML = navigator.userAgent;
 </script>
 
 </body>
