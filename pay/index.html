@@ -1,19 +1,59 @@
 <!DOCTYPE html>
 <html>
-  
-  <head>
-    <title></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  </head>
-  
-  <body>
-    <form name="gongyi" target="_blank" method="post" action="https://shenghuo.alipay.com/send/payment/fill.htm" accept-charset="GBK">
-      <input type="hidden" name="optEmail" value="jsz_thing@126.com">
-      <input type="hidden" name="memo" value="赠言：">
-      <input id="payAmount" type="hidden" name="payAmount" value="10">
-      <input id="title" type="hidden" name="title" value="捐赠支持">
-      <input type="submit" value="支付"></input>
-    </form>
-  </body>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <title>个人站点</title>
+    <style>
+        .btn{
+            display: block;
+            text-align: center;
+            background: #0090ff;
+            color: #ffffff;
+            line-height: 32px;
+            height: 32px;
+            margin-bottom: 12px;
+        }
+    </style>
+    <script>
+        function jump(type){
+            document.getElementById(type).submit();
+        }
+    </script>
+</head>
+<body>
+
+<a class="btn" href="https://qr.alipay.com/stx02769wztaf3qout00md5">签约商家付款</a>
+<a class="btn" href="https://qr.alipay.com/aex02046nqian54wgptlu8a">扫码发码平台企业</a>
+<a class="btn" href="https://qr.alipay.com/apckz1y6zm2t15is7e">扫码发码平台个人</a>
+<a class="btn" href="https://szsupport.weixin.qq.com/cgi-bin/mmsupport-bin/readtemplate?t=w_redirect_taobao&url=https%3A%2F%2Fqr.alipay.com%2Ffkx08410so7jltyqzn4bdf6&lang=zh_CN">收款</a>
+<a class="btn" href="alipays://platformapi/startapp?appId=20000215&sourceId=qrcode&actionType=detail&batchNo=20160721000750031000900006227327&shareObjId=null&shareObjType=null&token=YXpK5H6T">AA收款</a>
+<a class="btn" href="https://payapp.weixin.qq.com/aa/detail?collection_no=cb643d396b8fac4f83acda47aae43cb95104bb291f4e0581fc5ade1dd7f83848f0f709cb589c7ac55ad11d5ef31e2b41&showwxpaytitle=1&ch=qr">微信收款</a>
+<a class="btn" href="http://w.url.cn/s/CQyiVmW">微信转账</a>
+
+<form id="postForm" target="_blank" method="post" action="https://shenghuo.alipay.com/send/payment/fill.htm" accept-charset="GBK">
+    <input type="hidden" name="optEmail" value="jsz_thing@126.com">
+    <input type="hidden" name="memo" value="赠言：">
+    <input type="hidden" name="payAmount" value="10">
+    <input type="hidden" name="title" value="post">
+    <a class="btn" href="javascript:jump('postForm')">支付宝转账POST提交</a>
+</form>
+
+<form id="getForm" target="_blank" method="get" action="https://shenghuo.alipay.com/send/payment/fill.htm" accept-charset="GBK">
+    <input type="hidden" name="optEmail" value="jsz_thing@126.com">
+    <input type="hidden" name="memo" value="赠言：">
+    <input type="hidden" name="payAmount" value="10">
+    <input type="hidden" name="title" value="get">
+    <a class="btn" href="javascript:jump('getForm')">支付宝转账GET提交</a>
+</form>
+
+<form accept-charset="GBK" action="https://shenghuo.alipay.com/send/payment/fill.htm" method="post" target="_blank">
+    <input type="hidden" name="optEmail" value="jsz_thing@126.com" />
+    <input type="hidden" name="memo" value="如果你觉得我的文章对你有帮助，请我喝杯饮料吧，谢谢！" />
+    <input id="payAmount" type="hidden" name="payAmount" value="捐赠数额" />
+    <input id="title" type="hidden" name="title" value="备注" />
+    <input type="image" name="pay" src="https://img.alipay.com/sys/personalprod/style/mc/btn-index.png" value="转账" />
+</form>
+
+</body>
 </html>
