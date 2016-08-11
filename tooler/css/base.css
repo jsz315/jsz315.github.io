@@ -1,0 +1,57 @@
+html, body{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+.content{
+    padding: 10px;
+    position: relative;
+}
+.input-box, .output-box{
+    margin-bottom: 12px;
+}
+.lines-txt{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 4px;
+    height: 300px;
+}
+.label{
+    vertical-align: middle;
+    display: inline-block;
+    width: 48px;
+}
+.param-box{
+    margin-bottom: 12px;
+    position: relative;
+}
+.param-txt{
+    width: 72%;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 4px;
+}
+.btn{
+    font-size: 18px;
+    text-align: center;
+    padding: 4px;
+    background: #d83331;
+    color: #ffffff;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+.img-list{
+    background: #e8e8e8;
+    padding: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.img-item{
+    margin: 7px;
+    display: inline-block;
+}
+.img-list img{
+    width: 200px;
+    height: 200px;
+}
