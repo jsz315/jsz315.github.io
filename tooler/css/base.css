@@ -7,12 +7,10 @@ html, body{
     padding: 10px;
     position: relative;
 }
-.input-box, .output-box{
-    margin-bottom: 12px;
-}
 .lines-txt{
     box-sizing: border-box;
     width: 100%;
+    max-width: 100%;
     padding: 4px;
     height: 300px;
 }
@@ -25,16 +23,10 @@ html, body{
     margin-bottom: 12px;
     position: relative;
 }
-.param-txt{
-    width: 72%;
-    vertical-align: middle;
-    display: inline-block;
-    padding: 4px;
-}
 .btn{
-    font-size: 18px;
+    font-size: 15px;
     text-align: center;
-    padding: 4px;
+    padding: 6px;
     background: #d83331;
     color: #ffffff;
     margin-bottom: 12px;
@@ -48,10 +40,52 @@ html, body{
     list-style: none;
 }
 .img-item{
+    vertical-align: top;
+    position: relative;
     margin: 7px;
     display: inline-block;
+    font-size: 0;
 }
-.img-list img{
-    width: 200px;
-    height: 200px;
+.img-item span{
+    position: absolute;
+    display: inline-block;
+    bottom: 0;
+    left: 0;
+    padding: 3px;
+    font-size: 12px;
+    background: #d83331;
+    color: #ffffff;
+}
+.img-item img{
+    min-width: 40px;
+    min-height: 40px;
+}
+.input-box{
+    position: absolute;
+    right: 12px;
+    top: 0;
+    left: 48px;
+    bottom: 0;
+    margin: auto;
+}
+.param-txt{
+    display: block;
+    vertical-align: middle;
+    width: 100%;
+    padding: 3px;
+}
+.lines-box{
+    margin-bottom: 18px;
+}
+.web-list-create{
+    background: #f7b50c;
+}
+.web-grab{
+    background: #d83e14;
+}
+.deal-with{
+    background: #1eba38;
+}
+.img-show{
+    background: #40a5d8;
 }
