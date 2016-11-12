@@ -1,0 +1,66 @@
+html, body{
+	padding: 0;
+	margin: 0;
+}
+.content{
+	padding: 12px;
+}
+.lines-txt{
+	width: 100%;
+	max-width: 100%;
+	display: block;
+	box-sizing: border-box;
+	border: solid 1px #555;
+	margin-top: 4px;
+	margin-bottom: 12px;
+	height: 90px;
+}
+.btn-list{
+	text-align: center;
+}
+.btn{
+	background: #777;
+	text-align: center;
+	width: 40%;
+	display: inline-block;
+	border-radius: 5px;
+	padding: 7px 0;
+	margin: 8px;
+}
+.fetch-btn{
+	border-radius: 0;
+	margin: 0;
+	width: 100%;
+	margin-bottom: 12px;
+}
+.get-btn{
+	background: #2196f3;
+	color: #fff;
+}
+.post-btn{
+	background: #0abd3e;
+	color: #fff;
+}
+.param-list{
+	margin: 10px 0;
+}
+.param－item{
+	font-size: 12px;
+	display: flex;
+	align-items: center;
+	padding-bottom: 7px;
+	border-bottom: solid 1px #666;
+	margin-bottom: 7px;
+}
+.param-label{
+	width: 180px;
+	display: inline-block;
+}
+.param-txt{
+	width: 100%;
+	padding: 4px;
+	display: inline-block;
+	flex-flow: 1;
+	box-sizing: border-box;
+	border: solid 1px #555;
+}
