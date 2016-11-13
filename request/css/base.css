@@ -26,6 +26,7 @@ html, body{
 	border-radius: 5px;
 	padding: 7px 0;
 	margin: 8px;
+	cursor: pointer;
 }
 .fetch-btn{
 	border-radius: 0;

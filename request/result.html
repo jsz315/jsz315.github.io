@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <title>个人站点</title>
+
+    <link href="css/result.css" rel="stylesheet">
+    <script src="js/zepto.min.js" type="text/javascript"></script>
+    <script src="js/vue.min.js" type="text/javascript"></script>
+    <script src="js/result.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="content">
+
+	<div class="param-list">
+		<div class="param-item {{check(item)}}" v-for="item in data" v-on:click="selecte(item)">
+			<div class="param-num">{{$index + 1}}</div>
+			<div class="param-label">{{item.key}}</div>
+			<div class="param-txt">{{item.value}}</div>
+			<div class="param-btn"><div class="param-chosed" v-show="item.chosed"></div></div>
+		</div>
+	</div>
+
+	<div class="get-btn btn">更新排名</div>
+
+	<div class="vote-list">
+		<div class="vote-btn btn" data-num="1">投1票</div>
+		<div class="vote-btn btn" data-num="10">投10票</div>
+		<div class="vote-btn btn" data-num="50">投50票</div>
+	</div>
+
+</div>
+
+<div class="state-tip"></div>
+
+</body>
+</html>

@@ -49,6 +49,9 @@ function fetchGetData(){
 	var url = $(".url-txt").val();
 	setCookie("url", url);
 	var n = url.indexOf("?");
+	if(n == -1){
+		return [];
+	}
 	var search = url.substr(n + 1);
 	var data = [];
 	var list = search.split("&");
