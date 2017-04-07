@@ -20,11 +20,28 @@
     	text-align: center;
     	margin-bottom: 10px;
     }
+    .label{
+        color: #444;
+        margin-bottom: 9px;
+    }
+    .scheme-txt{
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
+        -webkit-box-flex: 1.0;
+        box-flex: 1.0;
+        display: block;
+        padding: 7px;
+        margin-bottom: 9px;
+    }
     </style>
 </head>
 <body>
 
 <div class="content">
+    <div class="label">自定义协议：</div>
+    <textarea class="scheme-txt" id="url-txt" onchange="changed(event)"></textarea>
+    <a href="#" id="url-btn">打开自定义链接</a>
 	<a href="weixin://dl/settings">settings</a>
 	<a href="weixin://dl/favorites">favorites</a>
 	<a href="weixin://dl/moments">moments</a>
@@ -39,6 +56,45 @@
 	<a href="weixin://dl/chat">chat</a>
 	<a href="weixin://dl/stickers">stickers</a>
 </div>
+
+<script type="text/javascript">
+    var txt = document.getElementById("url-txt"); 
+    var btn = document.getElementById("url-btn");
+
+    var url = getCookie("url");
+    txt.value = url;
+    btn.setAttribute("href", url);
+
+    function changed(e) {
+        btn.setAttribute("href", e.target.value);
+        setCookie("url", e.target.value);
+    }
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function setCookie(cname, cvalue, exdays) {
+        if(!exdays){
+            exdays = 30;
+        }
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + "; " + expires;
+    }
+</script>
 
 </body>
 </html>
