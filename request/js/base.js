@@ -46,7 +46,7 @@ $(function(){
 });
 
 function getJsonStr(obj){
-	if(typeof("obj") == "string"){
+	if(typeof(obj) == "string"){
 		return obj;
 	}
 	return JSON.stringify(obj);
