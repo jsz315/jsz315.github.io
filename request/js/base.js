@@ -71,11 +71,12 @@ function fetchPostData(){
 	list = list.concat(form.split("\n"));
 	for(var i = 0; i < list.length; i++){
 		var temp = list[i].split(":");
-		if(temp.length == 2){
+		if(temp.length >= 2){
 			var item = {};
 			data.push(item);
 			item.key = temp[0];
-			item.value = temp[1];
+			temp.splice(0, 1);
+			item.value = temp.join(":");
 			param[item.key] = item.value;
 		}
 	}
