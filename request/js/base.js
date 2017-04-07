@@ -32,18 +32,25 @@ $(function(){
 		if($(this).index() == 0){
 			$.get(url, param, function(str){
 				console.log(str);
-				$(".result-txt").val(str);
+				$(".result-txt").val(getJsonStr(str));
 			});
 		}
 		else{
 			$.post(url, param, function(str){
 				console.log(str);
-				$(".result-txt").val(str);
+				$(".result-txt").val(getJsonStr(str));
 			});
 		}
 	});
 
 });
+
+function getJsonStr(obj){
+	if(typeof("obj") == "string"){
+		return obj;
+	}
+	return JSON.stringify(obj);
+}
 
 function fetchGetData(){
 	var url = $(".url-txt").val();
