@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
     <title>个人站点</title>
-    <script src="js/jquery-1.8.3.min.js"></script>
-    <script src="js/jquery.qrcode.min.js"></script>
+    <script src="js/zepto.min.js" type="text/javascript"></script>
+    <script src="js/qrcode.min.js" type="text/javascript"></script>
     <style>
         .content{
             padding: 12px;
         }
         #code{
             width: 256px;
-            margin: auto;
+            margin: 32px auto;
             text-align: center;
+        }
+        #code img{
+            margin: auto;
         }
         h3{
             text-align: center;
@@ -39,14 +42,29 @@
 <body>
 <div class="content">
     <h3>二维码生成器</h3>
-    <div id="code"></div>
     <textarea class="word"></textarea>
     <div class="btn">生成二维码</div>
+    <div id="code"></div>
 </div>
 <script>
     $(function(){
+        var qrcode = null;
         $(".btn").click(function(){
-            $("#code").qrcode($(".word").val());
+            var msg = $(".word").val();
+            if(!qrcode){
+                qrcode = new QRCode("code", {
+                    text: msg,
+                    width: 160,
+                    height: 160,
+                    colorDark : '#000000',
+                    colorLight : '#ffffff',
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+            }
+            else{
+                qrcode.clear();
+                qrcode.makeCode(msg);
+            }            
         });
     })
 </script>
