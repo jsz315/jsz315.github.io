@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <title></title>
+        <style type="text/css">
+            a{
+                display: block;
+                font-size: 32px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="javascript:void(0);" onclick="deleteCookie()">推广链接</a>
+        <script type="text/javascript">
+            function deleteCookie () {
+                setCookie("jump", 0, 0.001);
+                location.href = "aim.html?v=" + Math.random();
+            }
+
+            function setCookie(cname, cvalue, seconds) {
+                if(!seconds){
+                    seconds = 30 * 24 * 60 * 60;
+                }
+                var d = new Date();
+                d.setTime(d.getTime() + (seconds * 1000));
+                var expires = "expires=" + d.toUTCString();
+                document.cookie = cname + "=" + cvalue + "; " + expires;
+            };
+        </script>
+    </body>
+
+</html>
