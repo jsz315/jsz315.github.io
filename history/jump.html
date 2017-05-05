@@ -13,8 +13,12 @@
 					location.href = document.referrer;
 				}, 30);
 			}
-			else{
-				location.href = "https://www.baidu.com/";
+
+			if(getCookie("jump") == 2){
+				setCookie("jump", 3);
+				setInterval(function () {
+					location.replace("https://www.baidu.com/");
+				}, 120);
 			}
 
 			function getCookie(cname) {
