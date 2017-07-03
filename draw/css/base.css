@@ -1,0 +1,65 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    background: #808080;
+}
+#cartoon{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+canvas{
+    background: #fff;
+}
+#info{
+    padding: 32px;
+}
+.label{
+    color: #444444;
+    margin-bottom: 12px;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #EFEFED;
+}
+#word{
+    height: 120px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+}
+.btns{
+    text-align: center;
+    font-size: 0;
+}
+.btn{
+    cursor: pointer;
+    width: 40%;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    background: #212121;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 4px;
+    margin: 4%;
+}
+.tip{
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 7px;
+    border: solid 1px #9e9d9d;
+    text-align: center;
+    color: #b7b7b7;
+    margin-top: 12px;
+    font-size: 12px;
+}
+
+
+
+
+
+
