@@ -1,15 +1,6 @@
-(function() {
-    var jump = getCookie("jump");
-    if(jump == "" || jump == 0){
-        setCookie("jump", 1);
-        location.href = "jump.html";
-    }
-    else if(jump == 1){
-        setCookie("jump", 2);
-    }
-})();
-
-
+/**
+ * Created by Administrator on 2017/7/25 0025.
+ */
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -23,7 +14,7 @@ function getCookie(cname) {
         }
     }
     return "";
-};
+}
 
 function setCookie(cname, cvalue, seconds) {
     if(!seconds){
@@ -33,4 +24,4 @@ function setCookie(cname, cvalue, seconds) {
     d.setTime(d.getTime() + (seconds * 1000));
     var expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + "; " + expires;
-};
+}
