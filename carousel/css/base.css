@@ -1,0 +1,49 @@
+html, body{
+	margin: 0;
+	padding: 0;
+	background: #8280F5;
+}
+.outer-carousel{
+	width: 7.2rem;
+	height: 100%;
+	background: #C6B7B7;
+    overflow: hidden;
+    font-size: 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+.inner-carousel{
+	position: absolute;
+	width: 7.2rem;
+	height: 100%;
+	word-break: keep-all;
+	white-space: nowrap;
+	left: 0;
+	top: 0;
+}
+.content-carousel{
+	width: 7.2rem;
+	height: 100%;
+	display: inline-block;
+	color: #fff;
+	text-align: center;
+	font-size: 1.2rem;
+	position: relative;
+}
+.action-carousel{
+	-webkit-transition: left 0.3s;
+	transition: left 0.3s;
+}
+.flex{
+	display: -webkit-box;
+    display: box;
+	-webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}

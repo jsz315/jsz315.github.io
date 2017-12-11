@@ -32,18 +32,25 @@ $(function(){
 		if($(this).index() == 0){
 			$.get(url, param, function(str){
 				console.log(str);
-				$(".result-txt").val(str);
+				$(".result-txt").val(getJsonStr(str));
 			});
 		}
 		else{
 			$.post(url, param, function(str){
 				console.log(str);
-				$(".result-txt").val(str);
+				$(".result-txt").val(getJsonStr(str));
 			});
 		}
 	});
 
 });
+
+function getJsonStr(obj){
+	if(typeof(obj) == "string"){
+		return obj;
+	}
+	return JSON.stringify(obj);
+}
 
 function fetchGetData(){
 	var url = $(".url-txt").val();
@@ -71,11 +78,12 @@ function fetchPostData(){
 	list = list.concat(form.split("\n"));
 	for(var i = 0; i < list.length; i++){
 		var temp = list[i].split(":");
-		if(temp.length == 2){
+		if(temp.length >= 2){
 			var item = {};
 			data.push(item);
 			item.key = temp[0];
-			item.value = temp[1];
+			temp.splice(0, 1);
+			item.value = temp.join(":");
 			param[item.key] = item.value;
 		}
 	}

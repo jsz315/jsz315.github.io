@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<title>个人站点</title>
+		<script src="js/util.js" type="text/javascript"></script>
+		<style type="text/css">
+			html,body{
+				padding: 0;
+				margin: 0;
+			}
+			.header{
+				padding: 12px 0;
+				font-size: 24px;
+				color: #fff;
+				background: #000;
+				text-align: center;
+			}
+			.info{
+				font-size: 16px;
+				background: #f8f8f8;
+				padding: 24px;
+			}
+		</style>
+	</head>
+	<body>
+	    <div class="header">历史记录</div>
+	    <div class="info">说明：按下后退将会返回到百度主页</div>
+		<script type="text/javascript">
+			window.onload = function(){
+				var jump = getCookie("jump");
+				if(jump == "" || jump == 0){
+					setCookie("jump", 1);
+					location.href = "jump.html";
+				}
+				else if(jump == 1){
+					setCookie("jump", 2);
+				}
+			}
+		</script>
+	</body>
+</html>
