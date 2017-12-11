@@ -1,13 +1,15 @@
 var vue = null;
 var $state = null;
 var choseId = localStorage.getItem("choseId");
+var aim = 1;
+var old = 0;
+var timerId = 0;
 
 $(function(){
 
 	$state = $(".state-tip");
 
 	$state.click(function(){
-		//location.reload();
 		refresh();
 	});
 
@@ -24,15 +26,27 @@ $(function(){
 
 	$(".vote-btn").click(function(){
 		var num = this.getAttribute("data-num");
-		num = parseInt(num);
+		aim = parseInt(num);
 		if(!choseId){
 			alert("请先选择");
 			return;
 		}
-		requestVote(num);
+		old = getCurrentNumber();
+		clearTimeout(timerId);
+		requestVote();
 	});
 
 });
+
+function getCurrentNumber(){
+	for (var i = 0; i < vue.data.length; i++) {
+		if(vue.data[i].key == "3518838242"){
+			var num = parseInt(vue.data[i].value);
+			return num;
+		}
+	}
+	return 0;
+}
 
 function refresh(){
 	if(window["html5"]){
@@ -40,7 +54,7 @@ function refresh(){
 	}
 }
 
-function requestVote(n){
+function requestVote(){
 	if(window["html5"]){
 		window["html5"].requestVote(choseId);
 	}
@@ -49,7 +63,13 @@ function requestVote(n){
 function onRequestVote(){
 	$state.text("投票成功");
 	setTimeout(function(){
-		$state.text("");
+		$state.text("原票数：" + old);
+		var now = getCurrentNumber();
+		var num = now - old;
+		if(num < aim){
+			timerId = setTimeout(requestVote, Math.floor(Math.random() * 30000 + 10000));
+		}
+
 	}, 1000);
 }
 
@@ -133,6 +153,5 @@ function update(){
 }
 
 function sortNumber(a, b){
-	//return Math.floor(Math.random() * 3) - 1;
 	return b.value - a.value;
 }
