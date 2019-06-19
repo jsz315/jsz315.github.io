@@ -17,6 +17,7 @@ $(function(){
             list.push(aim);
         }
         $(".webs").val(list.join("\n"));
+        $(".data").val(list.join("\n"));
         saveData(["url", "start", "end"]);
     });
 
