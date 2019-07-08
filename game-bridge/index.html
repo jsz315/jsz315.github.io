@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>        
+        (function (doc, win) {    
+            var docEl = doc.documentElement,    
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',    
+            recalc = function () {    
+            var clientWidth = docEl.clientWidth;    
+            if (!clientWidth) return;
+            clientWidth = clientWidth > 750 ? 750 : clientWidth;
+            docEl.style.fontSize = (clientWidth / 10) + 'px';    
+        };    
+        if (!doc.addEventListener) return;    
+        win.addEventListener(resizeEvt, recalc, false);    
+        doc.addEventListener('DOMContentLoaded', recalc, false);    
+        })(document, window);    
+    </script>
+    <script src="http://www.zeptojs.cn/zepto.min.js"></script>
+    <script>
+        window.CUSTOM = {
+            mockPath: './static/mock',
+            meshPath: './static/',
+            noServer: true
+        }
+    </script>
+<link href="css/index.css" rel="stylesheet"></head>
+<body class="bridgeGame" id="bridgeGame">
+
+    <div id="root"></div>
+    <div id="event"></div>
+        
+    <script type="text/javascript">
+        var CFG = {
+            // host
+            pgHost: '',
+            sessionKey: '2A6LQBxd1qo6TAQKCA2P1SD9eXXthEASE1bGpDaxxkYXCj',
+            sourceUserId: '0',
+            sourceUnionId: '0',
+            sourceToken: '',
+            //游戏ID
+            gameId: 5,
+            // image
+            headUrl: '//yun.tuisnake.com/h5-mami/webgame/web-login/header/newhander2.png',
+            // 名字
+            nickName: '我',
+            // score
+            shareScore: '0',
+            //pk者名字
+            shareNickName:'TOM',
+            //pk这头像
+            shareHeadUrl:'//yun.tuisnake.com/h5-mami/webgame/web-login/header/newhander3.png',
+            scoreTime:'0',
+            scoreRank:'0',
+            //最佳助力
+            scoreBestHelp: '100',
+            //中奖记录
+            winningRecord:'600',
+            firstRewardList:'[]',
+            //端内1,端外0
+            isPreview: '1',
+            startGame: '1'
+        };
+
+    </script>
+     <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+     <script src="//yun.tuisnake.com/h5-mami/webgame/lib/anime.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script></body>
+    </html>

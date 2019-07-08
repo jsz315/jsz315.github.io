@@ -1,0 +1,12 @@
+{
+  "code": "string",
+  "data": {
+    "headUrl": "//yun.tuisnake.com/h5-mami/webgame/web-login/header/newhander2.png",
+    "nickName": "tom",
+    "rank": 0,
+    "scoreBest": 0,
+    "userId": 0
+  },
+  "msg": "string",
+  "success": true
+}

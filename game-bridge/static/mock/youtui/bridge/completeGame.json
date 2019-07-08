@@ -1,0 +1,17 @@
+{
+    "data": {
+        "userId": null,
+        "nickName": "jsz",
+        "photo": "http://thirdwx.qlogo.cn/mmopen/vi_32/ykGRcou2PxkyA566elpHbB09OHpmBIukfu2Z5ncfic5xrVvRpGwQ6E0AYAfIticzj0HchFwrzj3h7qtZgqnQZp9w/132",
+        "prevail": 81,
+        "currentScore": 4,
+        "bestScore": 4,
+        "rank": 9,
+        "rankType": 0,
+        "no100Score": 0,
+        "previousScore": 0
+    },
+    "code": "200",
+    "msg": "请求成功",
+    "success": true
+}
