@@ -3013,4 +3013,27 @@ body::after {
   background-position: -10.035467rem 0;
 }
 
+.Loading {
+  position: fixed;
+  z-index: 120;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.72);
+}
+
+.Loading .gif {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1.333333rem;
+  height: 1.333333rem;
+  border-radius: 0.106667rem;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: #ffffff url(img/loading.0357f8a.gif) no-repeat center;
+  background-size: contain;
+}
+
 /*# sourceMappingURL=index.css.map*/
