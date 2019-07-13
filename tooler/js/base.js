@@ -9,11 +9,13 @@ $(function(){
         var url = $(".url").val();
         var start = $(".start").val();
         var end = $(".end").val();
+        var total = $(".total").val();
         start = parseInt(start);
         end = parseInt(end);
         var list = [];
         for(var i = start; i <= end; i++){
-            var aim = url.replace("###", i);
+            var n = getFomratNum(total, i);
+            var aim = url.replace("###", n);
             list.push(aim);
         }
         $(".webs").val(list.join("\n"));
@@ -87,4 +89,14 @@ function readData(list){
 function modelData(id, data){
     var html = new EJS({text:$("#" + id)[0].innerHTML, type:"{"}).render(data);
     return html;
+}
+
+function getFomratNum(total, i){
+    var num = Number(total);
+    if(isNaN(num) || num == 0){
+        return i;
+    }
+    var list = new Array(Number(num)).fill(0);
+    var str = list.push(i).join("");
+    return str.substr(-num);
 }
