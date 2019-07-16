@@ -1,17 +1,39 @@
 /**
  * Created by jiangsizhi on 2016/8/11.
  */
+var txtKeys = ["url", "start", "end", "total", "server", "filter-reg", "find-reg", "replace-reg", "front", "after", "width", "height", "server-status", "data-status"];
 $(function(){
 
-    addJump();
+    setupPageJump();
 
-    readData(["url", "start", "end", "reg", "find", "replace", "before", "after", "width", "height"]);
+    // $(".nav li").click(function(e){
+    //     var $div = $(e.currentTarget);
+    //     $div.addClass("active").siblings().removeClass("active");
+    //     var index = $div.index();
+    //     $(".page li").eq(index).show().siblings().hide();
+    // })
 
-    $(".web-list-create").click(function(){
-        var url = $(".url").val();
-        var start = $(".start").val();
-        var end = $(".end").val();
-        var total = $(".total").val();
+    readData(txtKeys);
+
+    if($("#server-status")[0].checked){
+        $("#server-content").collapse('show');
+    }
+    else{
+        $("#server-content").collapse('hide');
+    }
+
+    if($("#data-status")[0].checked){
+        $("#data-content").collapse('show');
+    }
+    else{
+        $("#data-content").collapse('hide');
+    }
+
+    $("#start-btn").click(function(){
+        var url = $("#url").val();
+        var start = $("#start").val();
+        var end = $("#end").val();
+        var total = $("#total").val();
         start = parseInt(start);
         end = parseInt(end);
         var list = [];
@@ -20,31 +42,35 @@ $(function(){
             var aim = url.replace("###", n);
             list.push(aim);
         }
-        $(".webs").val(list.join("\n"));
-        $(".data").val(list.join("\n"));
-        saveData(["url", "start", "end"]);
-    });
+        $("#aim-data").val(list.join("\n"));
+        saveData(txtKeys);
+    })
 
-    $(".web-grab").click(function(){
-        var reg = $(".reg").val();
-        var webs = $(".webs").val();
-        var urls = webs.split("\n");
-        var param = {};
-        param.urls = JSON.stringify(urls);
-        param.reg = reg;
-        $.post("http://127.0.0.1:3000/grab", param, function(str){
-            $(".fetch").val(str);
-            $(".data").val(str);
-        });
-        saveData(["reg"]);
-    });
+    $("#server-btn").click(function(){
+        fetchData();
+        saveData(txtKeys);
+    })
 
-    $(".deal-with").click(function(){
-        var find = $(".find").val();
-        var replace = $(".replace").val();
-        var before = $(".before").val();
-        var after = $(".after").val();
-        var fetch = $(".fetch").val();
+    $("#filter-btn").click(function(){
+        var reg = $("#filter-reg").val();
+        var webs = $("#webs-data").val();
+        var reg = new RegExp(reg, "g");
+        var m;
+        var list = [];
+        while(m = reg.exec(webs)){
+            console.log(m[1])
+            list.push(m[1]);
+        }
+        $("#filter-data,#aim-data").val(list.join("\n"));
+        saveData(txtKeys);
+    })
+    
+    $("#deal-btn").click(function(){
+        var find = $("#find-reg").val();
+        var replace = $("#replace-reg").val();
+        var front = $("#front").val();
+        var after = $("#after").val();
+        var fetch = $("#filter-data").val();
         var list = fetch.split("\n");
         var aim = [];
         for(var i = 0; i < list.length; i++){
@@ -53,95 +79,87 @@ $(function(){
                 var reg = new RegExp(find, "ig");
                 str = str.replace(reg, replace);
             }
-            str = before + str + after;
+            str = front + str + after;
             aim.push(str);
         }
-        $(".data").val(aim.join("\n"));
-        saveData(["find", "replace", "before", "after"]);
+        $("#deal-data,#aim-data").val(aim.join("\n"));
+        saveData(txtKeys);
     });
 
-    $(".img-show").click(function(){
-        var data = $(".data").val();
-        var width = $(".width").val();
-        var height = $(".height").val();
+    $("#show-btn").click(function(){
+        var data = $("#aim-data").val();
+        var width = $("#width").val();
+        var height = $("#height").val();
         width = width == "" ? "auto" : width;
         height = height == "" ? "auto" : height;
         var list = data.split("\n");
         $(".img-list")[0].innerHTML = modelData("img-item", {list: list, width: width, height: height});
-        saveData(["width", "height"]);
+        
+        saveData(txtKeys);
     });
-});
 
-function saveData(list){
-    for(var i = 0; i < list.length; i++){
-        var key = list[i];
-        var value = $("." + key).val();
-        localStorage.setItem(key, value);
-    }
-}
+    $("#auto-btn").click(function(){
 
-function readData(list){
-    for(var i = 0; i < list.length; i++){
-        var key = list[i];
-        var value = localStorage.getItem(key);
-        $("." + key).val(value);
-    }
-}
+        if($("#server-status")[0].checked){
 
-function modelData(id, data){
-    var html = new EJS({text:$("#" + id)[0].innerHTML, type:"{"}).render(data);
-    return html;
-}
-
-function getFomratNum(total, i){
-    var num = Number(total);
-    if(isNaN(num) || num == 0){
-        return i;
-    }
-    var list = new Array(Number(num)).fill(0);
-    list.push(i);
-    var str = list.join("");
-    return str.substr(-num);
-}
-
-function addJump(){
-    const VID = "JUMP_PAGE";
-    const TYPE_TOP = "▲";
-    const TYPE_BOTTOM = "▼";
-
-    if(!document.querySelector(VID)){
-        addDiv(TYPE_TOP);
-        addDiv(TYPE_BOTTOM);
-    }
-
-    function addDiv(type){
-        var div = document.createElement("div");
-        div.className = VID;
-        document.body.appendChild(div);
-        div.style.display = "block";
-        div.style.color = "#ffffff";
-        div.style.textAlign = "center";
-        div.style.lineHeight = "40px";
-        div.style.width = "40px";
-        div.style.height = "40px";
-        div.style.position = "fixed";
-        div.style.bottom = type == TYPE_BOTTOM ? "20px" : "70px";
-        div.style.right = "20px";
-        div.style.zIndex = "3000";
-        div.style.background = "rgba(0, 0, 0, 0.4)";
-        div.style.borderRadius = "8px";
-        div.style.cursor = "pointer";
-        div.innerHTML = type;
-
-        div.onclick = function(){
-            if(type == TYPE_BOTTOM){
-                document.documentElement.scrollTop = document.documentElement.scrollHeight;
-            }
-            else{
-                document.documentElement.scrollTop = 0;
-            }
+            fetchData().then(()=>{
+                $("#filter-btn").click();
+                if($("#data-status")[0].checked){
+                    $("#deal-btn").click();
+                }
+                $("#show-btn").click();
+            })
             
         }
-    }
+        else{
+            $("#start-btn").click();
+            $("#show-btn").click();
+        }
 
+        saveData(txtKeys);
+    })
+
+    $("#server-status").click(function(e){
+        if(this.checked){
+            $("#server-content").collapse('show');
+        }
+        else{
+            $("#server-content").collapse('hide');
+        }
+    })
+   
+    $("#data-status").click(function(e){
+        if(this.checked){
+            $("#data-content").collapse('show');
+        }
+        else{
+            $("#data-content").collapse('hide');
+        }
+    })
+    
+});
+
+function fetchData(){
+    $("#webs-data").val("请求数据...");
+    return new Promise(resolve=>{
+        var url = $("#url").val();
+        var start = $("#start").val();
+        var end = $("#end").val();
+        var total = $("#total").val();
+        var server = $("#server").val();
+        start = parseInt(start);
+        end = parseInt(end);
+        var list = [];
+        for(var i = start; i <= end; i++){
+            var n = getFomratNum(total, i);
+            var aim = url.replace("###", n);
+            aim = server + "?url=" + aim;
+            list.push(getHtml(aim));
+        }
+        Promise.all(list).then(res=>{
+            console.log("请求完成");
+            $("#webs-data").val(res[0]);
+            resolve();
+        })
+    })
 }

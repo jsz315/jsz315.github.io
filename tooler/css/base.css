@@ -89,3 +89,29 @@ html, body{
 .img-show{
     background: #40a5d8;
 }
+
+.page{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.all-row, .panel-content{
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+.panel-content{
+    background: #f0f0f0;
+    padding: 0;
+}
+.server-content,.data-content{
+    height: auto;
+}
+.server-content.hide,.data-content.hide{
+    height: 0px;
+}
+
+.size-btn{
+    width: 100%;
+}
