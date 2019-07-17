@@ -11,6 +11,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link href="css/base.css" rel="stylesheet">
+    <link href="css/autosuggest.css" rel="stylesheet">
 </head>
 
 <body>
@@ -21,8 +22,9 @@
                 <div class="col-md-1">
                     <label class="control-label">网址</label>
                 </div>
-                <div class="col-md-11">
+                <div class="col-md-11 as-wrapper">
                     <input class="form-control" id="url" placeholder="动态数字用###替换">
+                    <div class="as-menu list-group"></div>
                 </div>
             </div>
 
@@ -154,11 +156,23 @@
         <div class="col-md-1">
             <label class="control-label">尺寸</label>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-5">
             <input class="form-control" id="width" placeholder="宽">
         </div>
-        <div class="col-md-4">
+        <div class="col-md-5">
             <input class="form-control" id="height" placeholder="高">
+        </div>
+    </div>
+
+    <div class="row all-row">
+        <div class="col-md-1">
+            <label class="control-label">保存</label>
+        </div>
+        <div class="col-md-9">
+            <input class="form-control" id="desc" placeholder="输入网站描述">
+        </div>
+        <div class="col-md-2">
+            <button id="save-btn" type="button" class="btn size-btn">确定</button>
         </div>
     </div>
 
@@ -180,7 +194,7 @@
     <ul class="img-list"></ul>
     </div>
 
-    <script id="img-item" type="text/html">
+<script id="img-item" type="text/html">
     {% for(var i = 0; i < list.length; i++){ %}
     <li class="img-item">
         <span>{%= i + 1 %}</span>
@@ -188,6 +202,15 @@
             <img src="{%= list[i] %}" style="width: {%= width %};height: {%= height %}">
         </a>
     </li>
+    {% } %}
+</script>
+
+<script id="suggest-item" type="text/html">
+    {% for(var i = 0; i < list.length; i++){ %}
+        <div class="list-group-item  as-align-left" data-id="{%= i %}">
+            <span>{%= list[i] %}</span>
+            <span class="right-tip">{%= list[i] %}</span>
+        </div>
     {% } %}
 </script>
 

@@ -10,10 +10,10 @@ function saveData(list){
     }
 }
 
-function readData(list){
+function readData(list, data){
     for(var i = 0; i < list.length; i++){
         var key = list[i];
-        var value = localStorage.getItem(key);
+        var value = data ? data[key] : localStorage.getItem(key);
         if(key.indexOf("-status") != -1){
             $("#" + key)[0].checked = value == 1;
         }

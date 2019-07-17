@@ -1,8 +1,12 @@
 /**
  * Created by jiangsizhi on 2016/8/11.
  */
-var txtKeys = ["url", "start", "end", "total", "server", "filter-reg", "find-reg", "replace-reg", "front", "after", "width", "height", "server-status", "data-status"];
+var txtKeys = ["url", "start", "end", "total", "server", "filter-reg", "find-reg", "replace-reg", "front", "after", "width", "height", "server-status", "data-status", "desc"];
 $(function(){
+
+    let webConfig = localStorage.getItem("webConfig");
+    webConfig = webConfig ? JSON.parse(webConfig) : {};
+    console.log(webConfig);
 
     setupPageJump();
 
@@ -28,6 +32,34 @@ $(function(){
     else{
         $("#data-content").collapse('hide');
     }
+
+    $("#url").on("input", function(e){
+        console.log(e.target.value);
+        var url = e.target.value;
+        var list = []
+        for(let i in webConfig){
+            if(url.indexOf(i) != -1){
+                console.log("是否读取" + i + "配置");
+                list.push(i)
+            }
+        }
+
+        var html = modelData("suggest-item", {list: list});
+        $(".as-menu.list-group").html(html).show();
+        $(".as-menu.list-group").width($("#url").outerWidth());
+    })
+
+    $("#url").blur(function(e){
+        setTimeout(() => {
+            $(".as-menu.list-group").hide();
+        }, 300);
+    });
+
+    $(".as-wrapper").delegate(".list-group-item", "click", function(e){
+        readData(txtKeys, webConfig[e.target.innerHTML]);
+        $(".as-menu.list-group").hide();
+
+    })
 
     $("#start-btn").click(function(){
         var url = $("#url").val();
@@ -85,6 +117,21 @@ $(function(){
         $("#deal-data,#aim-data").val(aim.join("\n"));
         saveData(txtKeys);
     });
+
+    $("#save-btn").click(function(){
+        var desc = $("#desc").val();
+        var obj = {};
+        for(var i = 0; i < txtKeys.length; i++){
+            var key = txtKeys[i];
+            var value = localStorage.getItem(key);
+            obj[key] = value;
+        }
+        var webConfig = localStorage.getItem("webConfig");
+        webConfig = webConfig ? JSON.parse(webConfig) : {};
+        var search = (/\/\/(\S+?)\//g).exec(obj.url)[1];
+        webConfig[search] = obj;
+        localStorage.setItem("webConfig", JSON.stringify(webConfig));
+    })
 
     $("#show-btn").click(function(){
         var data = $("#aim-data").val();
