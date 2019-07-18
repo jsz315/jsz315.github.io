@@ -2,9 +2,15 @@
 function saveData(list){
     for(var i = 0; i < list.length; i++){
         var key = list[i];
-        var value = $("#" + key).val();
+        var value;
         if(key.indexOf("-status") != -1){
             value = $("#" + key)[0].checked ? 1 : 0
+        }
+        else if(key.indexOf("-opt") != -1){
+            value = $("#" + key)[0].checked ? 1 : 0
+        }
+        else{
+            value = $("#" + key).val();
         }
         localStorage.setItem(key, value);
     }
@@ -15,6 +21,9 @@ function readData(list, data){
         var key = list[i];
         var value = data ? data[key] : localStorage.getItem(key);
         if(key.indexOf("-status") != -1){
+            $("#" + key)[0].checked = value == 1;
+        }
+        else if(key.indexOf("-opt") != -1){
             $("#" + key)[0].checked = value == 1;
         }
         else{
@@ -42,6 +51,18 @@ function getFomratNum(total, i){
 async function getHtml(url){
     return new Promise(resolve=>{
         $.get(url, function(data){
+            resolve(data);
+        })
+    })
+}
+
+async function getWeb(server, data){
+    return new Promise(resolve=>{
+        $.post(server, {
+            url: data.url,
+            method: data.method,
+            authen: data.authen
+        },function(data){
             resolve(data);
         })
     })

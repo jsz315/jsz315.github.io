@@ -1,7 +1,7 @@
 /**
  * Created by jiangsizhi on 2016/8/11.
  */
-var txtKeys = ["url", "start", "end", "total", "server", "filter-reg", "find-reg", "replace-reg", "front", "after", "width", "height", "server-status", "data-status", "desc"];
+var txtKeys = ["url", "start", "end", "total", "server", "filter-reg", "find-reg", "replace-reg", "front", "after", "width", "height", "server-status", "data-status", "desc", "get-opt", "post-opt", "authen-data"];
 $(function(){
 
     let webConfig = localStorage.getItem("webConfig");
@@ -58,7 +58,6 @@ $(function(){
     $(".as-wrapper").delegate(".list-group-item", "click", function(e){
         readData(txtKeys, webConfig[e.target.innerHTML]);
         $(".as-menu.list-group").hide();
-
     })
 
     $("#start-btn").click(function(){
@@ -81,6 +80,19 @@ $(function(){
     $("#server-btn").click(function(){
         fetchData();
         saveData(txtKeys);
+
+        // var server = $("#server").val();
+        // $.post(server, {
+        //     url: "http://jsz315.github.io/tooler/",
+        //     method: "get",
+        //     authen: `origin: https://fanyi.baidu.com
+        //     referer: https://fanyi.baidu.com/?aldtype=85
+        //     user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36
+        //     x-requested-with: XMLHttpRequest`
+        // }, function(res){
+
+        // })
+        
     })
 
     $("#filter-btn").click(function(){
@@ -194,14 +206,21 @@ function fetchData(){
         var end = $("#end").val();
         var total = $("#total").val();
         var server = $("#server").val();
+        var method = $("input[name='method']:checked").val();
+        var authen = $("#authen-data").val();
         start = parseInt(start);
         end = parseInt(end);
         var list = [];
         for(var i = start; i <= end; i++){
             var n = getFomratNum(total, i);
-            var aim = url.replace("###", n);
-            aim = server + "?url=" + aim;
-            list.push(getHtml(aim));
+            var link = url.replace("###", n);
+            // aim = server + "?url=" + aim;
+            var data = {
+                url: link,
+                method: method,
+                authen: authen
+            }
+            list.push(getWeb(server, data));
         }
         Promise.all(list).then(res=>{
             console.log("请求完成");
