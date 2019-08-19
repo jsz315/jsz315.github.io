@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>可拖拽光源</title>
+    <title>世界位置</title>
     <script>
         (function (doc, win) {
             var dpr = window.devicePixelRatio || 1;
@@ -31,13 +31,22 @@
     
     <script>
         window.CFG = {
-            baseURL: ''
+            baseURL: '.'
         }
     </script>
 
-<link href="css/lights.css" rel="stylesheet"></head>
+<link href="css/world.css" rel="stylesheet"></head>
 <body>
-    <div class="control">镜头控制</div>
-    <script src="../../lib/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="../../dll/three.dll.86da5733.js"></script><script type="text/javascript" src="js/lights.js"></script></body>
+    <div class="control">
+        <div class="camera">（快捷键 C）镜头控制</div>
+        <span class="tip">坐标：</span>
+        <input class="pot" type="text" value="0,0,0"/>
+        <button class="add">添加点</button>
+        <button class="set">设置点</button>
+        <button class="del">删除</button>
+        <button class="drawTube">绘制管道</button>
+        <button class="drawObject">绘制物体</button>        
+    </div>
+    <script src="./../lib/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../../dll/three.dll.86da5733.js"></script><script type="text/javascript" src="js/world.js"></script></body>
 </html>
