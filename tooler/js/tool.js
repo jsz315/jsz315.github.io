@@ -58,12 +58,26 @@ async function getHtml(url){
 
 async function getWeb(server, data){
     return new Promise(resolve=>{
-        $.post(server, {
-            url: data.url,
-            method: data.method,
-            authen: data.authen
-        },function(data){
-            resolve(data);
-        })
+        $.ajax({
+			type:'post',
+			url:server,
+			contentType:'application/json;charset=utf-8',
+			//数据格式是json串，商品信息
+			data: JSON.stringify({
+                url: data.url,
+                method: data.method,
+                authen: data.authen
+            }),
+			success:function(data){//返回json结果
+				resolve(data);
+			}
+		});
+        // $.post(server, {
+        //     url: data.url,
+        //     method: data.method,
+        //     authen: data.authen
+        // },function(data){
+        //     resolve(data);
+        // })
     })
 }
