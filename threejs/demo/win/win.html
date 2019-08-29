@@ -6,27 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>门窗加载</title>
     <script>
-        (function (doc, win) {
-            var dpr = window.devicePixelRatio || 1;
-            var docEl = doc.documentElement;
-            var metaEl = document.querySelector('meta[name="viewport"]');
-            if(!metaEl){
-                metaEl = document.createElement('meta');
-                metaEl.name = "viewport";
-                doc.documentElement.firstElementChild.appendChild(metaEl);
-            }
-            var clientWidth = window.innerWidth;
-            var scale = 1 / dpr;
-            var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';  
-            var recalc = function () {    
-                var clientWidth = window.innerWidth * scale;
-                docEl.style.fontSize = 100 * (clientWidth * dpr / 750) + 'px';
-                metaEl.setAttribute('content', 'width=' + clientWidth * dpr + ',initial-scale=' + scale + ',maximum-scale=' + scale + ', minimum-scale=' + scale + ',user-scalable=no'); 
-            };    
-            if (!doc.addEventListener) return;    
-            win.addEventListener(resizeEvt, recalc, false);    
-            doc.addEventListener('DOMContentLoaded', recalc, false);    
-        })(document, window);    
+        // (function (doc, win) {
+        //     var dpr = window.devicePixelRatio || 1;
+        //     var docEl = doc.documentElement;
+        //     var metaEl = document.querySelector('meta[name="viewport"]');
+        //     if(!metaEl){
+        //         metaEl = document.createElement('meta');
+        //         metaEl.name = "viewport";
+        //         doc.documentElement.firstElementChild.appendChild(metaEl);
+        //     }
+        //     var clientWidth = window.innerWidth;
+        //     var scale = 1 / dpr;
+        //     var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';  
+        //     var recalc = function () {    
+        //         var clientWidth = window.innerWidth * scale;
+        //         docEl.style.fontSize = 100 * (clientWidth * dpr / 750) + 'px';
+        //         metaEl.setAttribute('content', 'width=' + clientWidth * dpr + ',initial-scale=' + scale + ',maximum-scale=' + scale + ', minimum-scale=' + scale + ',user-scalable=no'); 
+        //     };    
+        //     if (!doc.addEventListener) return;    
+        //     win.addEventListener(resizeEvt, recalc, false);    
+        //     doc.addEventListener('DOMContentLoaded', recalc, false);    
+        // })(document, window);    
     </script>
     
     <script>
