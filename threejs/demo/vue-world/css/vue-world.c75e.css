@@ -151,7 +151,6 @@ body {
   font-size: 0.12rem;
   width: 100%;
   overflow-x: hidden;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .canvas-box {
@@ -162,15 +161,22 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: #999999;
-  background-position: center;
-  background-size: cover;
+  background: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 #canvas {
+  border: none;
   width: 100% !important;
   height: auto !important;
-  display: block;
 }
 
-/*# sourceMappingURL=vue-world.353f.css.map*/
+/*# sourceMappingURL=vue-world.c75e.css.map*/

@@ -39,11 +39,11 @@
         }
     </script>
 
-<link href="css/vue-world.353f.css" rel="stylesheet"></head>
+<link href="css/vue-world.c75e.css" rel="stylesheet"></head>
 <body>
     <div class="canvas-box">
         <canvas id="canvas"></canvas>
     </div>
     <div id="home"></div>
-<script type="text/javascript" src="dll/three.dll.dfcfebda.js"></script><script type="text/javascript" src="js/vue-world.353f.js"></script></body>
+<script type="text/javascript" src="dll/three.dll.dfcfebda.js"></script><script type="text/javascript" src="js/vue-world.c75e.js"></script></body>
 </html>
